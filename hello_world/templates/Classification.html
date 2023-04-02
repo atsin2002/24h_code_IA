@@ -1,0 +1,39 @@
+{% load django_browser_reload %}
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'classi.css' %}">
+</head>
+
+<body>
+    <div id="header" >
+        <div class="container">
+            <nav>
+                <a href=""></a><img src="{% static 'logo.webp' %}" alt="Home" class="logo" width="50" height="50"></a>
+
+
+                <ul id="sidemenu">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="#about">Classification</a></li>
+                    <li><a href="#skills">Filtre</a></li>
+                    <li><a href="#portfolio">Style</a></li>
+                    <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+            </nav>
+        </div> 
+
+        <div id="upload">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" name="files" multiple>
+                <input type="submit" value="Upload">
+            </form>
+        </div>
+</body>
+
+</html>
